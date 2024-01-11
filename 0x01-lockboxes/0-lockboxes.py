@@ -9,7 +9,8 @@ def canUnlockAll(boxes):
     Determines if all the boxes can be opened.
 
     Parameters:
-    - boxes (List[List[int]]): A list of lists where each inner list represents a box and contains keys to other boxes.
+    - boxes (List[List[int]]): A list of lists where each inner list
+    represents a box and contains keys to other boxes.
 
     Returns:
     - bool: True if all boxes can be opened, False otherwise.
