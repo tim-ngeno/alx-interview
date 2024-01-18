@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+""" Calculate minimum number of operations needed to get to a certain
+result """
+
 
 def minOperations(n):
     """
