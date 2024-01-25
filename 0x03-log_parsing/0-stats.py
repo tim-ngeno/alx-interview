@@ -26,13 +26,14 @@ def main():
         for line_number, line in enumerate(sys.stdin, 1):
             try:
                 parts = line.strip().split()
-                ip_address = parts[0]
-                date = parts[3][1:-1]
+                # ip_address = parts[0]
+                # date = parts[3][1:-1]
                 status_code = int(parts[-2])
                 file_size = int(parts[-1])
 
                 # Assuming that lines not matching the format should be skipped
-                if parts[5] != "GET" or parts[6] != "/projects/260" or parts[7] != "HTTP/1.1":
+                if (parts[5] != "GET" or parts[6] != "/projects/260" or
+                        parts[7] != "HTTP/1.1"):
                     continue
 
                 total_size += file_size
