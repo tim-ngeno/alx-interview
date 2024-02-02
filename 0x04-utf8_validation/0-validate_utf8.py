@@ -19,18 +19,22 @@ def validUTF8(data):
         if trailing_bytes == 0:
             if (num >> 7) == 0b0:
                 continue            # Valid leading byte
-            elif (num >> 5) == 0b110:
-                trailing_bytes = 1  # 1 trailing byte for 2-byte char
-            elif (num >> 4) == 0b1110:
-                trailing_bytes = 2  # 2 trailing bytes for 3-byte char
-            elif (num >> 3) == 0b11110:
-                trailing_bytes = 3  # 3 trailing bytes for 4-byte char
-            else:
+
+            leading_ones = 0
+            mask = 0b10000000
+            while (num & mask) == mask:
+                leading_ones += 1
+                mask >>= 1
+
+            if leading_ones == 1 or leading_ones > 4:
                 return False
+
+            trailing_bytes = leading_ones - 1
+
         else:
-            # check if current byte is a trailing byte (starts with 10)
+            # Check if current byte is a trailing byte (starts with 10)
             if (num >> 6) == 0b10:
-                trailing_bytes -= 1  # Valid byte, reduce the count
+                trailing_bytes -= 1
             else:
                 return False
 
