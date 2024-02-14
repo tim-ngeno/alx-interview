@@ -1,10 +1,9 @@
 #!/usr/bin/node
-// Print all characters of a Star Wars movie
 
 const request = require('request');
 
 if (process.argv.length < 3) {
-  console.error(`Usage: node 0-starwars_character.js <id>`);
+  console.error(`Usage: node script.js <movie_id>`);
   process.exit(1);
 }
 
@@ -20,16 +19,21 @@ request.get(apiUrl, (error, response, body) => {
     const film = JSON.parse(body);
     const characters = film.characters;
 
-    characters.forEach((characterUrl) => {
+    // Function to fetch and print character data
+    const printCharacterData = (characterUrl) => {
       request.get(characterUrl, (error, response, body) => {
-	if (error) console.error(`Error fetching data: ${error}`);
-	else if (response.statusCode !== 200) {
-	  console.error(`Status ${response.statusCode} fetching data`);
-	} else {
-	  const character = JSON.parse(body);
-	  console.log(`${character.name}`);
-	}
+        if (error) {
+          console.error(`Error fetching character data: ${error}`);
+        } else if (response.statusCode !== 200) {
+          console.error(`Status ${response.statusCode} fetching character data`);
+        } else {
+          const character = JSON.parse(body);
+          console.log(character.name);
+        }
       });
-    });
+    };
+
+    // Loop through each character URL and print character name
+    characters.forEach(printCharacterData);
   }
 });
