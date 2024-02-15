@@ -1,5 +1,6 @@
 #!/usr/bin/node
 // Fetching star wars characters from an api
+
 const request = require('request');
 
 if (process.argv.length < 3) {
