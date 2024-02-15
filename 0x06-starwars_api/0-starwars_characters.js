@@ -1,9 +1,9 @@
 #!/usr/bin/node
-
+// Fetching star wars characters from an api
 const request = require('request');
 
 if (process.argv.length < 3) {
-  console.error(`Usage: node script.js <movie_id>`);
+  console.error('Usage: node script.js <movie_id>');
   process.exit(1);
 }
 
