@@ -16,9 +16,10 @@ const fetchCharacterData = (characterUrl) => {
   return new Promise((resolve, reject) => {
     request.get(characterUrl, (error, response, body) => {
       if (error) {
-        reject(`Error fetching character data: ${error}`);
+        reject(new Error(`Error fetching character data: ${error}`));
       } else if (response.statusCode !== 200) {
-        reject(`Status ${response.statusCode} fetching character data`);
+        reject(new Error(`Status ${response.statusCode} fetching` +
+			 ' character data'));
       } else {
         const character = JSON.parse(body);
         resolve(character.name);
