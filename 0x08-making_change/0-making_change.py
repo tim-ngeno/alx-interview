@@ -6,6 +6,9 @@ def makeChange(coins, total):
     """
     Determines the fewest number of coins needed to meet a given amount
     """
+    # Sort the coins in reverse order
+    coins.sort(reverse=True)
+
     if total <= 0:
         return 0
 
