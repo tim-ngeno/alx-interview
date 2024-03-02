@@ -28,7 +28,7 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    coins.sort(reversed=True)
+    coins.sort(reverse=True)
     i = 0
     count = 0
 
