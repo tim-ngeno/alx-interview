@@ -23,7 +23,10 @@ def isWinner(x, nums):
         else:
             # Or the number of primes available
             count = sum(1 for p in primes if p <= nums[round_num])
-            return "Ben" if count % 2 == 0 else "Maria"
+            if count == 1:
+                return "Maria" if round_num % 2 == 0 else "Ben"
+            else:
+                return "Ben" if count % 2 == 0 else "Maria"
 
     # Store the number of wins for each player
     maria_wins = ben_wins = 0
