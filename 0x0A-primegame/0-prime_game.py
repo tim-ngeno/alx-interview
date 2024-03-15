@@ -17,6 +17,10 @@ def isWinner(x, nums):
     """ Determines the winner of the prime game """
     def get_winner(round_num, primes):
         """ Helper function to get the winner """
+        # If there are no prime numbers, Maria wins
+        if not primes:
+            return "Maria"
+
         # If the given number is prime, the player whose turn it is wins
         if nums[round_num] in primes:
             return "Maria" if round_num % 2 == 0 else "Ben"
